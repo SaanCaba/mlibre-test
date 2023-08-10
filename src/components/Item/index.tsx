@@ -1,3 +1,4 @@
+import Price from "@/Helpers/Price";
 import { Item } from "@/models/items";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,12 +22,7 @@ function Item({ item }: Props) {
           />
         </div>
         <div className="flex flex-col">
-          <span className="font-bold">
-            {Number(item.price).toLocaleString("es-AR", {
-              style: "currency",
-              currency: item.currency_id,
-            })}
-          </span>
+          <Price price={item.price} currency_id={item.currency_id} />
           <p>{item.title}</p>
         </div>
         <span className="ml-auto opacity-50 capitalize text-sm pr-[15px]">

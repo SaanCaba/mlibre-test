@@ -21,6 +21,7 @@ export interface Item {
   stop_time: string;
   catalog_listing: boolean;
   address: Address
+  pictures: Pictures[]
 }
 
 interface Address {
@@ -28,4 +29,14 @@ interface Address {
   state_name: string;
   city_id: string;
   city_name: string;
+}
+
+export interface Description{
+    plain_text:string
+}
+
+interface Pictures {
+    id: string;
+    url: string
+    max_size: string
 }
