@@ -1,5 +1,3 @@
-import Layout from "@/components/Layout";
-
 export default function Home() {
-  return <Layout>pepe</Layout>;
+  return <h1>pepe</h1>;
 }

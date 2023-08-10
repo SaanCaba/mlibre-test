@@ -16,10 +16,11 @@ function NavBar() {
     });
   };
   return (
-    <header className="h-16 px-4 bg-yellow-200 flex">
+    <header className="h-16 px-[150px] bg-yellow-200 flex items-center">
+      <span>logo</span>
       <form
         onSubmit={(e) => onSubmit(e)}
-        className="m-auto flex gap-3 max-w-screen-xl w-80"
+        className="m-auto flex gap-3 max-w-screen-xl flex-1"
       >
         <input
           ref={inputRef}
@@ -31,7 +32,7 @@ function NavBar() {
           className="px-4 py-2 h-8 rounded-full transition-all duration-700 ease-in hover:bg-zinc-300"
           type="submit"
         >
-          <AiOutlineSearch />
+          <AiOutlineSearch className="" />
         </button>
       </form>
     </header>

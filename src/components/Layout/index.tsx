@@ -1,4 +1,5 @@
 import React from "react";
+import NavBar from "../NavBar";
 
 interface Props {
   children: React.ReactNode;
@@ -6,9 +7,10 @@ interface Props {
 
 function Layout({ children }: Props) {
   return (
-    <>
-      <main className="m-auto max-w-screen-xl p-4">{children}</main>
-    </>
+    <div>
+      <NavBar />
+      <main className="m-auto max-w-screen-xl px-[150px]">{children}</main>
+    </div>
   );
 }
 
