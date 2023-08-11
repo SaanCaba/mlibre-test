@@ -33,16 +33,19 @@ function ItemPage({ item, description }: Props) {
               />
             ))}
           </div>
-          <div className="w-[550px] flex items-center pr-[30px]">
-            <Image
-              src={currentPicture}
-              alt={item.title}
-              width={240}
-              height={240}
-              className="object-contain m-auto rounded-sm"
-            />
+          <div className="min-h-[100%] flex justify-center w-[550px] items-center">
+            <div className="pr-[30px]">
+              <Image
+                src={currentPicture}
+                alt={item.title}
+                width={340}
+                height={340}
+                className="object-contain m-auto rounded-sm w-full h-full"
+              />
+            </div>
           </div>
-          <div className="flex flex-col">
+
+          <div className="flex flex-col pt-5">
             <h1 className="text-2xl pb-3 font-bold">{item.title}</h1>
             <Price price={item.price} currency_id={item.currency_id} />
           </div>

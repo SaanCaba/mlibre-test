@@ -9,7 +9,7 @@ function NavBar() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push({
-      pathname: "items",
+      pathname: "/items",
       query: {
         search: inputRef.current?.value,
       },
