@@ -9,7 +9,7 @@ function Layout({ children }: Props) {
   return (
     <div>
       <NavBar />
-      <main className="m-auto max-w-screen-xl px-[150px]">{children}</main>
+      <main className="m-auto px-[150px]">{children}</main>
     </div>
   );
 }

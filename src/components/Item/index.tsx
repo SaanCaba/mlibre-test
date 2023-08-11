@@ -11,7 +11,7 @@ interface Props {
 function Item({ item }: Props) {
   return (
     <Link key={item.id} href={`/items/${item.id}`}>
-      <div className="flex gap-5">
+      <div className="flex gap-5 pt-5 pb-5 border border-b-[1px] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_5px] ">
         <div>
           <Image
             src={item.thumbnail}

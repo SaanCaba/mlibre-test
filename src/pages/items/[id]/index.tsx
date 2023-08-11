@@ -1,9 +1,10 @@
 import Price from "@/Helpers/Price";
+import SidePicture from "@/components/SidePicture";
 import { API_ITEM_URL } from "@/constants";
 import { Description, Item } from "@/models/items";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 
 interface Props {
   item: Item;
@@ -11,27 +12,46 @@ interface Props {
 }
 
 function ItemPage({ item, description }: Props) {
-  const picture = useMemo(() => {
+  const pictures = useMemo(() => {
     return item.pictures.map((picture) => {
       return picture.url;
     });
   }, []);
-  console.log(picture);
+  const [currentPicture, setCurrentPicture] = useState(pictures[0]);
+
   return (
     <section className="bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-black">
       <article>
-        <Image
-          src={picture[0]}
-          alt={item.title}
-          width={240}
-          height={240}
-          className="object-contain m-auto"
-        />
+        <div className="flex">
+          <div className="bg-white pt-2 pb-2 flex flex-col w-[90px] gap-5 pl-2 pr-2 ">
+            {pictures.map((pic) => (
+              <SidePicture
+                key={pic}
+                title={item.title}
+                picture={pic}
+                setCurrentPicture={setCurrentPicture}
+              />
+            ))}
+          </div>
+          <div className="w-[550px] flex items-center pr-[30px]">
+            <Image
+              src={currentPicture}
+              alt={item.title}
+              width={240}
+              height={240}
+              className="object-contain m-auto rounded-sm"
+            />
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-2xl pb-3 font-bold">{item.title}</h1>
+            <Price price={item.price} currency_id={item.currency_id} />
+          </div>
+        </div>
+
         <div className="p-3">
-          <Price price={item.price} currency_id={item.currency_id} />
-          <h1 className="text-2xl pb-3">{item.title}</h1>
-          <hr className="border border-[0.4] border-black" />
-          <p className="pt-3 opacity-50">{description}</p>
+          <hr className="border border-[0.4] border-black mb-4" />
+          <span className="text-lg">Desripción</span>
+          <p className="opacity-50">{description}</p>
         </div>
       </article>
     </section>

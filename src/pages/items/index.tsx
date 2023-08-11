@@ -8,6 +8,13 @@ interface Props {
 }
 
 function ItemsPage({ items }: Props) {
+  if (items.length === 0) {
+    return (
+      <h1 className="text-center pt-5 text-3xl">
+        No se encotraron productos para tu búsqueda!
+      </h1>
+    );
+  }
   return (
     <section>
       <article className="grid bg-white gap-5">

@@ -17,7 +17,6 @@ function NavBar() {
   };
   return (
     <header className="h-16 px-[150px] bg-yellow-200 flex items-center">
-      <span>logo</span>
       <form
         onSubmit={(e) => onSubmit(e)}
         className="m-auto flex gap-3 max-w-screen-xl flex-1"
@@ -27,12 +26,13 @@ function NavBar() {
           className="h-8 rounded-sm flex-1 px-4 focus:outline-none"
           type="text"
           placeholder="Producto..."
+          required
         />
         <button
           className="px-4 py-2 h-8 rounded-full transition-all duration-700 ease-in hover:bg-zinc-300"
           type="submit"
         >
-          <AiOutlineSearch className="" />
+          <AiOutlineSearch size={20} />
         </button>
       </form>
     </header>
