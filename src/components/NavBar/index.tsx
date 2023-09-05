@@ -17,20 +17,20 @@ function NavBar() {
     })
   }
   return (
-    <header className='h-16  bg-yellow-200 flex items-center'>
+    <header className='h-16  bg-meli flex items-center'>
       <form
         onSubmit={(e) => onSubmit(e)}
-        className='m-auto px-[240px] w-full flex gap-3  flex-1'
+        className='m-auto px-[240px] w-full flex  flex-1'
       >
         <input
           ref={inputRef}
-          className={`h-8 rounded-sm flex-1 px-4 ${styles.inputSearch}`}
+          className={`h-12 rounded-sm flex-1 px-4  ${styles.inputSearch}`}
           type='text'
           placeholder='Producto...'
           required
         />
         <button
-          className='px-4 py-2 h-8 rounded-full transition-all duration-700 ease-in hover:bg-zinc-300'
+          className='bg-white py-4 h-12 border-l-[1px] px-4  transition-all duration-700 ease-in hover:bg-zinc-300'
           type='submit'
         >
           <AiOutlineSearch size={20} />
