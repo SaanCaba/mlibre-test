@@ -16,7 +16,7 @@ function SectionItem({ item }: Props) {
     <Link href={`/items/${item.id}`}>
       <div className='bg-white flex flex-col gap-2 p-3 max-w-[240px]'>
         <div className='flex justify-center'>
-          <div className='h-[200px] w-[200px] flex items-center justify-center '>
+          <div className='h-[200px] w-[200px] flex items-center justify-center border-b-[1px]'>
             {loading ? (
               <Loading />
             ) : (
