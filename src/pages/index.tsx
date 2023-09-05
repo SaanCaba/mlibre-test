@@ -30,7 +30,7 @@ export default function Home({ items }: Props) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const response = await fetch(`${API_SEARCH_URL}q=iphone&limit=5`)
   const { results: items } = (await response.json()) as { results: Item[] }
 

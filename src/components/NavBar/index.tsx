@@ -16,6 +16,7 @@ function NavBar() {
         search: inputRef.current?.value
       }
     })
+    inputRef.current!.value = ''
   }
   return (
     <header className='h-16  bg-meli flex items-center'>
@@ -27,7 +28,7 @@ function NavBar() {
         </div>
         <form
           onSubmit={(e) => onSubmit(e)}
-          className='m-auto  w-full flex  flex-1'
+          className='m-auto  w-full flex  flex-1 relative'
         >
           <input
             ref={inputRef}
@@ -37,7 +38,7 @@ function NavBar() {
             required
           />
           <button
-            className='bg-white py-4 h-12 border-l-[1px] px-4  transition-all duration-700 ease-in hover:bg-zinc-300'
+            className='bg-white py-4 h-12 border-l-[1px] absolute right-0 px-4'
             type='submit'
           >
             <AiOutlineSearch size={20} />

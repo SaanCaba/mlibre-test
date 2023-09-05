@@ -4,7 +4,9 @@ import { API_ITEM_URL } from '@/constants'
 import { Description, Item } from '@/models/items'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
+import { BiStoreAlt } from 'react-icons/bi'
 
 interface Props {
   item: Item
@@ -45,6 +47,21 @@ function ItemPage({ item, description }: Props) {
           <div className='flex flex-col pt-5'>
             <h1 className='text-2xl pb-3 font-bold'>{item.title}</h1>
             <Price price={item.price} currency_id={item.currency_id} />
+            <span className='text-lg'>
+              <i>{item.warranty}</i>
+            </span>
+            <div className='pt-3 w-[400px]'>
+              <Link
+                href={item.permalink}
+                target='__blank'
+                className='p-3 bg-meli flex items-center justify-center gap-2 w-max-[20px] text-black rounded-lg transition-all duration-300 ease-in hover:bg-meli/80'
+              >
+                <BiStoreAlt size={20} />
+                <span className='text-lg'>
+                  Ver en el sitio oficial de Mercado Libre
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
 
