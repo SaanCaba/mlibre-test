@@ -1,17 +1,17 @@
-import React from "react";
-import NavBar from "../NavBar";
+import React from 'react'
+import NavBar from '../NavBar'
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 function Layout({ children }: Props) {
   return (
     <div>
       <NavBar />
-      <main className="m-auto px-[150px]">{children}</main>
+      <main className='m-auto px-[240px]'>{children}</main>
     </div>
-  );
+  )
 }
 
-export default Layout;
+export default Layout
