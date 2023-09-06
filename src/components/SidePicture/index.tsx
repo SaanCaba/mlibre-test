@@ -22,14 +22,14 @@ function SidePicture({ picture, title, setCurrentPicture }: Props) {
       onMouseLeave={() => setOnHover(false)}
       className={`${
         onHover ? 'border-[1px] border-blue-400' : 'border-[1px] border-black'
-      } rounded-sm min-h-[50px] w-[50px]`}
+      } rounded-sm lg:min-h-[50px] min-h-[80px] w-[80px] lg:w-[50px]`}
     >
       <Image
         src={picture}
         alt={title}
         width={50}
         height={50}
-        className='h-full max-h-[50px] max-w-[50px] w-full object-contain'
+        className='h-full max-h-[80px] max-w-[80px] lg:max-h-[50px] lg:max-w-[50px] w-full object-contain'
       />
     </div>
   )

@@ -9,7 +9,9 @@ function Layout({ children }: Props) {
   return (
     <div>
       <NavBar />
-      <main className='m-auto px-[240px]'>{children}</main>
+      <main className='m-auto pb-[20px] px-[20px] lg:px-[240px]'>
+        {children}
+      </main>
     </div>
   )
 }

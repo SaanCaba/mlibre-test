@@ -20,7 +20,7 @@ function NavBar() {
   }
   return (
     <header className='h-16  bg-meli flex items-center'>
-      <div className='px-[240px] flex w-full'>
+      <div className='px-[20px] lg:px-[240px] flex w-full'>
         <div className='min-w-[50px] flex justify-center items-center cursor-pointer'>
           <Link href='/'>
             <AiFillHome size={24} />

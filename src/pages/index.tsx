@@ -17,7 +17,7 @@ export default function Home({ items }: Props) {
         src={MeliPromoImg}
         alt='Promo img'
         width={0}
-        className='w-full'
+        className='w-full lg:h-[300px] h-[190px] object-cover'
         height={300}
       />
       <PaymentMethods />

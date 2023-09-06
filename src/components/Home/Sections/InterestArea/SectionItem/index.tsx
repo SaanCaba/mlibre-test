@@ -14,7 +14,7 @@ function SectionItem({ item }: Props) {
   const { hdPicture, loading } = usePicture(item.id)
   return (
     <Link href={`/items/${item.id}`}>
-      <div className='bg-white flex flex-col gap-2 p-3 max-w-[240px] transition-all ease-in duration-300 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_5px] '>
+      <div className='bg-white rounded-lg w-full flex flex-col gap-2 p-3 lg:max-w-[240px] transition-all ease-in duration-300 hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_5px] '>
         <div className='flex justify-center'>
           <div className='h-[200px] w-[200px] flex items-center justify-center border-b-[1px]'>
             {loading ? (

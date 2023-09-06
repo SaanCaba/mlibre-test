@@ -22,10 +22,10 @@ function ItemPage({ item, description }: Props) {
   const [currentPicture, setCurrentPicture] = useState(pictures[0])
 
   return (
-    <section className='bg-white min-h-screen shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-black'>
+    <section className='bg-white min-h-screen p-3 lg:p-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-black'>
       <article>
-        <div className='flex'>
-          <div className='bg-white pt-2 pb-2 flex flex-col w-[90px] gap-5 pl-2 pr-2 '>
+        <div className='flex flex-col-reverse lg:flex-row lg:flex-none'>
+          <div className='bg-white pt-2 pb-2 flex flex-col items-center lg:items-start w-full lg:w-[90px] gap-5 pl-2 pr-2 '>
             {pictures.map((pic) => (
               <SidePicture
                 key={pic}
@@ -35,7 +35,7 @@ function ItemPage({ item, description }: Props) {
               />
             ))}
           </div>
-          <div className='min-h-[600px] flex justify-center w-[550px] items-center'>
+          <div className='min-h-[500px] lg:min-h-[600px] flex justify-center lg:w-[550px] items-center'>
             <Image
               src={currentPicture}
               alt={item.title}
@@ -50,14 +50,14 @@ function ItemPage({ item, description }: Props) {
             <span className='text-lg'>
               <i>{item.warranty}</i>
             </span>
-            <div className='pt-3 w-[400px]'>
+            <div className='pt-3 lg:w-[400px]'>
               <Link
                 href={item.permalink}
                 target='__blank'
                 className='p-3 bg-meli flex items-center justify-center gap-2 w-max-[20px] text-black rounded-lg transition-all duration-300 ease-in hover:bg-meli/80'
               >
-                <BiStoreAlt size={20} />
-                <span className='text-lg'>
+                <BiStoreAlt className='h-[25px] w-[25px]' size={20} />
+                <span className='text-lg text-center lg:text-start'>
                   Ver en el sitio oficial de Mercado Libre
                 </span>
               </Link>

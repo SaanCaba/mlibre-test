@@ -8,8 +8,8 @@ import styles from './index.module.css'
 
 function PaymentMethods() {
   return (
-    <div className={`bg-white w-full  mt-4 rounded-lg ${styles.grid}`}>
-      <div className='flex '>
+    <div className={`bg-white lg:w-full  mt-4 rounded-lg ${styles.grid}`}>
+      <div className='flex lg:flex-row flex-col'>
         <Method
           description='Ver promociones bancarias'
           method='Tarjeta de crédito'
@@ -30,7 +30,7 @@ function PaymentMethods() {
         </Method>
       </div>
 
-      <div className='border-l-[1px] border-gray flex items-center justify-center'>
+      <div className='border-l-[1px] border-gray p-4 lg:p-0 flex items-center justify-center'>
         <button className='border-none rounded-full p-2 bg-blue-500 h-min'>
           <AiOutlinePlus className='text-white' />
         </button>
