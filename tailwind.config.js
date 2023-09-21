@@ -10,6 +10,9 @@ module.exports = {
     extend: {
       colors: {
         meli: '#fff159'
+      },
+      boxShadow: {
+        custom: 'rgba(0, 0, 0, 0.24) 0px 3px 5px'
       }
     }
   },

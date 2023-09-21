@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
-
+import { revalidatePath } from 'next/cache'
 import { AiOutlineSearch, AiFillHome } from 'react-icons/ai'
 import styles from './index.module.css'
 import Link from 'next/link'
@@ -19,7 +19,7 @@ function NavBar() {
     inputRef.current!.value = ''
   }
   return (
-    <header className='h-16  bg-meli flex items-center'>
+    <header id='top' className='h-16  bg-meli flex items-center'>
       <div className='px-[20px] lg:px-[240px] flex w-full'>
         <div className='min-w-[50px] flex justify-center items-center cursor-pointer'>
           <Link href='/'>
