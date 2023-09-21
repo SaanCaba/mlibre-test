@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
-import { revalidatePath } from 'next/cache'
 import { AiOutlineSearch, AiFillHome } from 'react-icons/ai'
 import styles from './index.module.css'
 import Link from 'next/link'
+import { useItems } from '@/hooks/useItems'
 
 function NavBar() {
   const router = useRouter()
   const inputRef = useRef<null | HTMLInputElement>(null)
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { researchItems } = useItems()
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     router.push({
       pathname: '/items',
@@ -16,6 +17,8 @@ function NavBar() {
         search: inputRef.current?.value
       }
     })
+    await researchItems(inputRef.current?.value as string)
+
     inputRef.current!.value = ''
   }
   return (

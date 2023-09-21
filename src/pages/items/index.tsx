@@ -1,20 +1,23 @@
+import { useState, useEffect } from 'react'
 import Item from '@/components/Item'
 import Loading from '@/components/Loading'
 import { API_SEARCH_URL } from '@/constants'
+import { useItems } from '@/hooks/useItems'
 import { Item as ItemType } from '@/models/items'
 import { GetServerSideProps } from 'next'
-import { useState } from 'react'
 
 interface Props {
   items: ItemType[]
-  query: string
 }
 
-function ItemsPage({ items, query }: Props) {
-  const [offset, setOffset] = useState(0)
-  const [loadedItems, setLoadedItems] = useState<ItemType[]>(items)
-  const [loading, setLoading] = useState<boolean>(false)
-  if (items.length === 0) {
+function ItemsPage({ items: firstItems }: Props) {
+  const { items, loadMoreItems, loadFirstItems, loading } = useItems()
+  useEffect(() => {
+    if (firstItems.length > 0) {
+      loadFirstItems(firstItems)
+    }
+  }, [])
+  if (firstItems.length === 0) {
     return (
       <h1 className='text-center pt-5 text-3xl'>
         No se encotraron productos para tu búsqueda!
@@ -22,28 +25,17 @@ function ItemsPage({ items, query }: Props) {
     )
   }
 
-  const loadMoreItems = async () => {
-    setLoading(true)
+  const handleClick = async () => {
     try {
-      const response = await fetch(
-        `${API_SEARCH_URL}${query}&limit=7&offset=${offset + 1}`
-      )
-      const { results: newItems } = (await response.json()) as {
-        results: ItemType[]
-      }
-      const concatItems = [...loadedItems, ...newItems]
-      setLoadedItems(concatItems)
-      setOffset((offset) => offset + 1)
+      await loadMoreItems()
     } catch (error) {
       console.log(error)
-    } finally {
-      setLoading(false)
     }
   }
   return (
     <section>
       <article className='grid bg-white gap-5'>
-        {loadedItems.map((item) => (
+        {items.map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </article>
@@ -53,7 +45,7 @@ function ItemsPage({ items, query }: Props) {
         ) : (
           <button
             className='bg-meli rounded-lg flex flex p-2 gap-2 transition-all duration-300 ease-in hover:shadow-custom'
-            onClick={loadMoreItems}
+            onClick={handleClick}
           >
             <span className='text-xl '>Cargar más...</span>
           </button>
