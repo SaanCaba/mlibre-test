@@ -6,3 +6,12 @@
 .inputSearch:focus {
   outline: 1.5px solid black;
 }
+
+.navbarGrid {
+  display: grid;
+  grid-template-columns: 200px 550px 1fr;
+}
+
+.disneyImg {
+  scale: 0.8;
+}

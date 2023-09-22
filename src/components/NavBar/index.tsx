@@ -4,6 +4,9 @@ import { AiOutlineSearch, AiFillHome } from 'react-icons/ai'
 import styles from './index.module.css'
 import Link from 'next/link'
 import { useItems } from '@/hooks/useItems'
+import DisneyImg from '@/images/disney-promo.webp'
+import Image from 'next/image'
+import NavBarSections from './Sections'
 
 function NavBar() {
   const router = useRouter()
@@ -22,9 +25,12 @@ function NavBar() {
     inputRef.current!.value = ''
   }
   return (
-    <header id='top' className='h-16  bg-meli flex items-center'>
-      <div className='px-[20px] lg:px-[240px] flex w-full'>
-        <div className='min-w-[50px] flex justify-center items-center cursor-pointer'>
+    <header
+      id='top'
+      className='h-24  px-[20px] lg:px-[380px] p-2  bg-meli flex flex-col'
+    >
+      <div className={`${styles.navbarGrid} w-full`}>
+        <div className='min-w-[50px]  flex items-center mr-auto cursor-pointer'>
           <Link href='/'>
             <AiFillHome size={24} />
           </Link>
@@ -37,7 +43,7 @@ function NavBar() {
             ref={inputRef}
             className={`h-12 rounded-sm flex-1 px-4  ${styles.inputSearch}`}
             type='text'
-            placeholder='Producto...'
+            placeholder='Buscar productos, marcas y más...'
             required
           />
           <button
@@ -47,7 +53,17 @@ function NavBar() {
             <AiOutlineSearch size={20} />
           </button>
         </form>
+        <div className='ml-auto'>
+          <Image
+            width={400}
+            height={30}
+            src={DisneyImg}
+            className={styles.disneyImg}
+            alt='disney promo'
+          />
+        </div>
       </div>
+      <NavBarSections />
     </header>
   )
 }

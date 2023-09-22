@@ -1,0 +1,4 @@
+.sectionGrid {
+  display: grid;
+  grid-template-columns: 200px 600px 1fr;
+}
