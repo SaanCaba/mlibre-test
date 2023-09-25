@@ -27,7 +27,7 @@ function NavBar() {
   return (
     <header
       id='top'
-      className='h-24  px-[20px] lg:px-[380px] p-2  bg-meli flex flex-col'
+      className='lg:h-24   px-[20px] lg:px-[380px] p-2  bg-meli flex flex-col'
     >
       <div className={`${styles.navbarGrid} w-full`}>
         <div className='min-w-[50px]  flex items-center mr-auto cursor-pointer'>

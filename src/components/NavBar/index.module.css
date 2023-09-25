@@ -15,3 +15,12 @@
 .disneyImg {
   scale: 0.8;
 }
+
+@media (max-width: 700px) {
+  .navbarGrid {
+    grid-template-columns: 50px 1fr;
+  }
+  .disneyImg {
+    display: none;
+  }
+}

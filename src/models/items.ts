@@ -23,6 +23,7 @@ export interface Item {
   address: Address
   pictures: Pictures[]
   warranty: string
+  attributes: Attribute[]
 }
 
 interface Address {
@@ -40,4 +41,10 @@ interface Pictures {
   id: string
   url: string
   max_size: string
+}
+
+export interface Attribute {
+  id: string
+  name: string
+  value_name: string
 }

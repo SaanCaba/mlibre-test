@@ -1,12 +1,14 @@
 import Price from '@/Helpers/Price'
+import Attributes from '@/components/Attributes'
 import SidePicture from '@/components/SidePicture'
 import { API_ITEM_URL } from '@/constants'
 import { Description, Item } from '@/models/items'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useMemo, useState } from 'react'
-import { BiStoreAlt } from 'react-icons/bi'
+import { BiStoreAlt, BiArrowBack } from 'react-icons/bi'
 
 interface Props {
   item: Item
@@ -20,57 +22,73 @@ function ItemPage({ item, description }: Props) {
     })
   }, [])
   const [currentPicture, setCurrentPicture] = useState(pictures[0])
+  const router = useRouter()
 
   return (
-    <section className='bg-white min-h-screen p-3 lg:p-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-black'>
-      <article>
-        <div className='flex flex-col-reverse lg:flex-row lg:flex-none'>
-          <div className='bg-white pt-2 pb-2 flex flex-col items-center lg:items-start w-full lg:w-[90px] gap-5 pl-2 pr-2 '>
-            {pictures.map((pic) => (
-              <SidePicture
-                key={pic}
-                title={item.title}
-                picture={pic}
-                setCurrentPicture={setCurrentPicture}
+    <section className='min-h-screen flex flex-col gap-3'>
+      <div className='flex gap-2 items-center mt-2'>
+        <button onClick={router.back}>
+          <BiArrowBack size={26} />
+        </button>
+        <span>Volver</span>
+      </div>
+      <div className='bg-white min-h-screen p-3 lg:p-0 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] text-black'>
+        <article>
+          <div className='flex flex-col-reverse lg:flex-row lg:flex-none'>
+            <div className='bg-white pt-2 pb-2 flex flex-col items-center lg:items-start w-full lg:w-[90px] gap-5 pl-2 pr-2 '>
+              {pictures.map((pic) => (
+                <SidePicture
+                  key={pic}
+                  title={item.title}
+                  picture={pic}
+                  setCurrentPicture={setCurrentPicture}
+                />
+              ))}
+            </div>
+            <div className='min-h-[500px] lg:min-h-[600px] flex justify-center lg:w-[550px] items-center'>
+              <Image
+                src={currentPicture}
+                alt={item.title}
+                width={340}
+                height={340}
+                className='object-contain max-h-[340px] max-w-[340px] m-auto rounded-sm'
               />
-            ))}
-          </div>
-          <div className='min-h-[500px] lg:min-h-[600px] flex justify-center lg:w-[550px] items-center'>
-            <Image
-              src={currentPicture}
-              alt={item.title}
-              width={340}
-              height={340}
-              className='object-contain max-h-[340px] max-w-[340px] m-auto rounded-sm'
-            />
-          </div>
-          <div className='flex flex-col pt-5'>
-            <h1 className='text-2xl pb-3 font-bold'>{item.title}</h1>
-            <Price price={item.price} currency_id={item.currency_id} />
-            <span className='text-lg'>
-              <i>{item.warranty}</i>
-            </span>
-            <div className='pt-3 lg:w-[400px]'>
-              <Link
-                href={item.permalink}
-                target='__blank'
-                className='p-3 bg-meli flex items-center justify-center gap-2 w-max-[20px] text-black rounded-lg transition-all duration-300 ease-in hover:bg-meli/80'
-              >
-                <BiStoreAlt className='h-[25px] w-[25px]' size={20} />
-                <span className='text-lg text-center lg:text-start'>
-                  Ver en el sitio oficial de Mercado Libre
-                </span>
-              </Link>
+            </div>
+            <div className='flex flex-col pt-5 gap-2'>
+              <h1 className='text-2xl pb-3 font-bold'>{item.title}</h1>
+              <Price price={item.price} currency_id={item.currency_id} />
+              <span className='text-lg'>
+                <i>{item.warranty}</i>
+              </span>
+              <div className='pt-3 lg:w-[400px]'>
+                <Link
+                  href={item.permalink}
+                  target='__blank'
+                  className='p-3 bg-meli flex items-center justify-center gap-2 w-max-[20px] text-black rounded-lg transition-all duration-300 ease-in hover:bg-meli/80'
+                >
+                  <BiStoreAlt className='h-[25px] w-[25px]' size={20} />
+                  <span className='text-lg text-center lg:text-start'>
+                    Ver en el sitio oficial de Mercado Libre
+                  </span>
+                </Link>
+              </div>
+              <span className='text-sm text-blue-500'>
+                Ver los medios de pago
+              </span>
+              <div className='mt-5 text-sm'>
+                <span>Lo que tenés que saber del producto</span>
+                <Attributes attributes={item.attributes} />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className='p-3'>
-          <hr className='border border-[0.4] border-black mb-4' />
-          <span className='text-lg'>Desripción</span>
-          <p className='opacity-50'>{description}</p>
-        </div>
-      </article>
+          <div className='p-3'>
+            <hr className='mb-4' />
+            <span className='text-lg'>Desripción</span>
+            <p className='opacity-50'>{description}</p>
+          </div>
+        </article>
+      </div>
     </section>
   )
 }

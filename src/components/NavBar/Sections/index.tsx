@@ -16,7 +16,7 @@ function NavBarSections() {
     ]
   }, [])
   return (
-    <div className={`${styles.sectionGrid}`}>
+    <div className={`${styles.sectionGrid} lg:grid hidden`}>
       <div className='flex gap-1'>
         <CiLocationOn size={26} />
         <div className='flex flex-col'>
