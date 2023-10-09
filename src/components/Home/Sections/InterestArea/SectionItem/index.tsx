@@ -31,7 +31,7 @@ function SectionItem({ item }: Props) {
           </div>
         </div>
         <Price price={item.price} currency_id={item.currency_id} />
-        <span>{item.title}</span>
+        <span>{item.title.slice(0, item.title.length - 5)}...</span>
       </div>
     </Link>
   )
