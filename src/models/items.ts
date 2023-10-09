@@ -48,3 +48,7 @@ export interface Attribute {
   name: string
   value_name: string
 }
+
+export interface Paging {
+  total: number
+}

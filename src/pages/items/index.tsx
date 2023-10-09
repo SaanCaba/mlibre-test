@@ -3,14 +3,15 @@ import Item from '@/components/Item'
 import Loading from '@/components/Loading'
 import { API_SEARCH_URL } from '@/constants'
 import { useItems } from '@/hooks/useItems'
-import { Item as ItemType } from '@/models/items'
+import { Item as ItemType, Paging } from '@/models/items'
 import { GetServerSideProps } from 'next'
 
 interface Props {
   items: ItemType[]
+  paging: Paging
 }
 
-function ItemsPage({ items: firstItems }: Props) {
+function ItemsPage({ items: firstItems, paging }: Props) {
   const { items, loadMoreItems, loadFirstItems, loading } = useItems()
   useEffect(() => {
     if (firstItems.length > 0) {
@@ -34,6 +35,11 @@ function ItemsPage({ items: firstItems }: Props) {
   }
   return (
     <section>
+      <div className='flex gap-2 py-2 items-center'>
+        <i className='text-sm'>Resultados totales</i>
+        <i className='text-gray-500  text-sm'>{paging.total}</i>
+      </div>
+
       <article className='grid bg-white gap-5'>
         {items.map((item) => (
           <Item key={item.id} item={item} />
@@ -61,12 +67,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const response = await fetch(
     `${API_SEARCH_URL}${query.search}&limit=7&offset=0`
   )
-  const { results: items } = (await response.json()) as { results: Item[] }
+  const { results: items, paging } = (await response.json()) as {
+    results: Item[]
+    paging: Paging
+  }
 
   return {
     props: {
       items,
-      query: query.search
+      query: query.search,
+      paging
     }
   }
 }

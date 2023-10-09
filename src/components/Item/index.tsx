@@ -16,14 +16,14 @@ function Item({ item }: Props) {
           <Image
             src={item.thumbnail}
             alt={item.title}
-            width={90}
-            height={90}
+            width={100}
+            height={100}
             className='object-cover'
           />
         </div>
         <div className='flex flex-col'>
+          <p className='text-lg'>{item.title}</p>
           <Price price={item.price} currency_id={item.currency_id} />
-          <p>{item.title}</p>
         </div>
         <span className='ml-auto opacity-50 capitalize text-sm pr-[15px]'>
           <i>{item.address.city_name}</i>
